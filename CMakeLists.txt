@@ -33,6 +33,18 @@ ament_target_dependencies(mapping_example_cpp
   visualization_msgs
 )
 
+add_executable(mapping_log_odds src/mapping_log_odds.cpp src/mapping_node.cpp)
+ament_target_dependencies(mapping_log_odds
+  rclcpp
+  std_msgs
+  geometry_msgs
+  sensor_msgs
+  nav_msgs
+  tf2
+  tf2_geometry_msgs
+  visualization_msgs
+)
+
 add_executable(exploration_example_cpp src/exploration_example.cpp src/exploration_node.cpp)
 ament_target_dependencies(exploration_example_cpp
   rclcpp
@@ -45,7 +57,19 @@ ament_target_dependencies(exploration_example_cpp
   visualization_msgs
 )
 
-install(TARGETS mapping_example_cpp exploration_example_cpp
+add_executable(exploring_harmonic_potential_fields src/exploring_harmonic_potential_fields.cpp src/exploration_node.cpp)
+ament_target_dependencies(exploring_harmonic_potential_fields
+  rclcpp
+  std_msgs
+  geometry_msgs
+  sensor_msgs
+  nav_msgs
+  tf2
+  tf2_geometry_msgs
+  visualization_msgs
+)
+
+install(TARGETS mapping_example_cpp exploration_example_cpp mapping_log_odds exploring_harmonic_potential_fields
   DESTINATION lib/${PROJECT_NAME}
 )
 
